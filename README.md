@@ -36,6 +36,6 @@ promo1=PercentageDiscount(10)
 promo2=FixedDiscount(500)
 
 print(f"final with 10% off:{my_cart.calculate_final_total(promo1)}")
-print(f"final with RS 500 off:{my_cart.calculate_final_total(promo2)}")
+
 
 print(f"final with RS 500 off:{my_cart.calculate_final_total(promo2)}")
