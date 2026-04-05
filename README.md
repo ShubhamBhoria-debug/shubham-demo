@@ -17,9 +17,7 @@ class PercentageDiscount(Discount):
     def apply_discount(self, amount):
         return amount* (1-self.percentage /100)
     
-class FixedDiscount(Discount):
-    def __init__(self,amount_off):
-        self.amount_off=amount_off
+class FixedDiscount(Discount):off
 
     def apply_discount(self, amount):
         return amount-self.amount_off
