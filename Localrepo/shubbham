@@ -3,11 +3,15 @@ import os
 
 data=[
     {"name":"shubham","age":'18'},
-    {"name":"ram","age":'23'}
-
+    {"name":"ram","age":'23'},
+    {"name":"raju","age":'12'}
 ]
+
 with open("data.csv",'w',newline='') as f:
     fobj=csv.DictWriter(f,fieldnames=["name","age"])
     fobj.writeheader()
     fobj.writerows(data)
+
+
+
     
