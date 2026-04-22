@@ -1,0 +1,94 @@
+import csv
+import os
+from datetime import datetime
+Filename="expenses.csv"
+FIELDS=['Date','Description','Amount']
+
+def initilise_file():
+            if not os.path.exists(Filename):
+                 with open(Filename,"w",newline="") as f:
+                      writer=csv.DictWriter(f,fieldnames=FIELDS)
+                      writer.writeheader()
+
+def add_expenses():
+            desc=input("what did you buy")
+            try:
+
+                amount=float(input("enter how much did it cost"))
+            except ValueError:
+                 print("invalid amount enter")
+                 return
+            date=datetime.now().strftime("%y-%m-%d,%H:%M:%S")
+            with open(Filename,"a",newline="") as file:
+                 writer=csv.DictWriter(file,fieldnames=FIELDS)
+                 writer.writerow({
+                        "Date":date,
+            "Description":desc,
+            "Amount":amount
+        })
+            print("expenses logged:")
+
+def view_expenses():
+    if not os.path.exists(Filename):
+        print("no expenses record yet.:")
+        return
+    total=0
+    print(f"/n{'Date':<20}|{'Description':<20}|$ {'Amount':<10}")
+    print("-" * 55)
+    with open(Filename,"r") as obj:
+        reader=csv.DictReader(obj)
+        for row in reader:
+            print(f"{row['Date']:<20}|{row['Description']:<20}|${row['Amount']:<10}")
+            total +=float(row['Amount'])
+            print("-" *55)
+            print(f"{'Total':<41}|${total:<10.2f}")
+def main():
+    initilise_file()
+    while True:
+        print("/n__csv Expenses tracer")
+
+        print("1. Add expenses")
+        print("2. View all expenses")
+        print("3.exit")
+        ch=input("select your choice:")
+        if ch=="1":
+            add_expenses()
+        elif ch =="2":
+            view_expenses()
+        elif ch=="3":
+             break
+        else:
+             print("invalid entery")
+             
+
+
+if __name__ =="__main__":
+    main()
+    
+
+            
+
+
+
+
+
+
+          
+    
+
+    
+    
+          
+          
+
+        
+
+
+
+
+
+
+
+
+
+
